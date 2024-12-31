@@ -1,6 +1,40 @@
-function Player(name, marker) {
-    this.name = name;
-    this.marker = marker;
+// function Player(name, marker) {
+//     this.name = name;
+//     this.marker = marker;
+// }
+// const player = new Player('steve', 'X');
+// console.log(player.name); // 'steve'
+
+//Constructor approach
+// function oldCar(make, model, year, color) {
+//     this.make = make;
+//     this.model = model;
+//     this.year = year;
+//     this.color = color;
+// }
+
+// const myOldCar = new oldCar('Toyota', 'Corolla', 2008, 'silver');
+
+// console.log(myOldCar.make);
+// console.log(myOldCar.model);
+// console.log(myOldCar.year);
+// console.log(myOldCar.color);
+
+// Class approach
+class newCar {
+    constructor(make, model, year, color) {
+        this.make = make;
+        this.model = model;
+        this.year = year;
+        this.color = color;
+        this.drive = () => { console.log(`you drive the ${this.model}`) }
+    }
 }
-const player = new Player('steve', 'X');
-console.log(player.name); // 'steve'
+
+const mynewCar = new newCar('Honda', 'Civic', 2020, 'Gray');
+
+console.log(mynewCar.make);
+console.log(mynewCar.model);
+console.log(mynewCar.year);
+console.log(mynewCar.color);
+mynewCar.drive()
