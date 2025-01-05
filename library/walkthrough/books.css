@@ -95,3 +95,68 @@ h1 {
     color: #181818;
     /* Invert text color for contrast */
 }
+
+.book-card {
+    display: inline-block;
+    width: 300px;
+    height: 200px;
+    margin: 10px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    text-align: center;
+    font-family: 'Montserrat';
+}
+
+.book-header {
+    background-color: #333;
+    color: silver;
+    padding: 20px;
+    text-align: center;
+}
+
+.book-title {
+    margin: 0;
+    font-size: 22px;
+}
+
+.book-author {
+    margin: 5px 0 0 0;
+    font-size: 18px;
+}
+
+.book-body {
+    padding: 20px;
+    text-align: center;
+}
+
+.book-pages {
+    margin: 0;
+    font-size: 18px;
+}
+
+.book-status {
+    margin: 10px 0 0 0;
+    font-size: 16px;
+    color: #333;
+}
+
+.read-status {
+    background-color: rgb(65, 65, 72);
+}
+
+button {
+    padding: 10px 20px;
+    border: 2px solid #333;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    background-color: #404353;
+    cursor: pointer;
+    color: silver;
+}
+
+button:hover {
+    background-color: #333;
+    color: #fff;
+}
