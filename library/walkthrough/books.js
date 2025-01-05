@@ -6,13 +6,35 @@ function Book(title, author, pages, read) {
     this.pages = pages;
     this.read = read;
 }
+
+function render() {
+    let libraryEl = document.querySelector('#library');
+    libraryEl.innerHTML = ''
+    for (let i = 0; i < myLibrary.length; i++) {
+        let book = myLibrary[i];
+        let bookEl = document.createElement('div');
+        bookEl.innerHTML = `
+        <div class='card-header'>
+        <h3 class='title'>${book.title}<h3>
+        <h5 class='author'>by ${book.author}<h5>
+        </div>
+        <div class='card-body'>
+        <p>${book.pages} pages</p>
+        <p class='read-status'>${book.read ? 'Read' : 'Not read yet'}</p>
+        </div>`;
+        libraryEl.appendChild(bookEl);
+    }
+}
+
 function addBookToLibrary() {
     let title = document.querySelector('#title').value;
     let author = document.querySelector('#author').value;
     let pages = document.querySelector('#pages').value;
     let read = document.querySelector('#read').value;
     let newBook = new Book(title, author, pages, read);
-    console.log(newBook);
+    myLibrary.push(newBook)
+    render();
+
 }
 let newBookBtn = document.querySelector('#new-book-btn');
 newBookBtn.addEventListener('click', function () {
@@ -20,7 +42,7 @@ newBookBtn.addEventListener('click', function () {
     newBookForm.style.display = 'flex';
 });
 
-document.querySelector('#new-book-form').addEventListener('submit', function () {
+document.querySelector('#new-book-form').addEventListener('submit', function (event) {
     event.preventDefault();
     addBookToLibrary();
 })
