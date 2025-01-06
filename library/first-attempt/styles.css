@@ -24,3 +24,7 @@
     border: 2px solid;
     padding: 20px;
 }
+
+.book-header {
+    font-family: 'Montserrat';
+}
