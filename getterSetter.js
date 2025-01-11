@@ -1,23 +1,21 @@
-const obj = {
-    _property: 0, // Underlying property
+const person = {
+    _age: 25,
   
-    // Getter
-    get property() {
-      return this._property;
+    get age() {
+      return this._age;
     },
   
-    // Setter
-    set property(value) {
-      if (value >= 0) {
-        this._property = value;
+    set age(newAge) {
+      if (newAge > 0) {
+        this._age = newAge;
       } else {
-        console.log("Value must be non-negative");
+        console.log("Age must be positive");
       }
     }
   };
-console.log(obj.property); // Getter is called -> Output: 0
-
-obj.property = 5;         // Setter is called
-console.log(obj.property); // Getter is called -> Output: 5
-
-obj.property = -3;        // Setter is called -> Output: Value must be non-negative
+  
+  console.log(person.age);   // Getter -> Output: 25
+  person.age = 30;           // Setter updates _age
+  console.log(person.age);   // Getter -> Output: 30
+  person.age = -5;           // Setter -> Output: Age must be positive
+  
