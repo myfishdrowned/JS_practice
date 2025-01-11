@@ -14,8 +14,7 @@ const person = {
     }
   };
   
-  console.log(person.age);   // Getter -> Output: 25
+  console.log(person._age);   // Getter -> Output: 25
   person.age = 30;           // Setter updates _age
   console.log(person.age);   // Getter -> Output: 30
   person.age = -5;           // Setter -> Output: Age must be positive
-  
