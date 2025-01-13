@@ -1,0 +1,162 @@
+@import url('https://fonts.googleapis.com/css2?family=Bruno+Ace+SC&family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Nabla&family=Noto+Sans+Syloti+Nagri&family=Ysabeau+SC:wght@1..1000&display=swap');
+
+
+:root {
+    background-color: #181818;
+    color: silver;
+}
+
+h1 {
+    font-family: 'Bruno Ace SC';
+}
+
+#new-book-btn {
+    display: block;
+    font-family: 'Kanit';
+    margin: 0 auto;
+    padding: 20px;
+    font-size: 20px;
+    background-color: #444242;
+    color: silver;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+#new-book-form {
+    display: flex;
+    /* Flex layout for better alignment */
+    flex-direction: column;
+    /* Arrange elements vertically */
+    gap: 15px;
+    /* Space between form elements */
+    max-width: 400px;
+    /* Limit the form width */
+    margin: 20px auto;
+    /* Center the form horizontally */
+    padding: 20px;
+    /* Add internal padding */
+    background-color: #282828;
+    /* Slightly lighter background for contrast */
+    border: 2px solid #444242;
+    /* Match button border style */
+    border-radius: 10px;
+    /* Rounded corners for a cohesive look */
+}
+
+#new-book-form label {
+    font-family: 'Montserrat', sans-serif;
+    /* Consistent font */
+    font-size: 16px;
+    color: silver;
+    /* Match overall color scheme */
+}
+
+#new-book-form input[type="text"],
+#new-book-form input[type="checkbox"] {
+    padding: 10px;
+    /* Add padding for better usability */
+    font-size: 14px;
+    /* Consistent font size */
+    border: 1px solid #444242;
+    /* Subtle border */
+    border-radius: 5px;
+    /* Rounded corners */
+    background-color: #181818;
+    /* Match background color */
+    color: silver;
+    /* Match text color */
+}
+
+#new-book-form input[type="text"]:focus {
+    outline: none;
+    /* Remove default outline */
+    border: 1px solid silver;
+    /* Highlight focus state */
+}
+
+#new-book-form input[type="submit"] {
+    padding: 10px 20px;
+    /* Comfortable button size */
+    font-size: 16px;
+    font-family: 'Bruno Ace SC';
+    background-color: #444242;
+    color: silver;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.4s;
+    /* Smooth hover effect */
+}
+
+#new-book-form input[type="submit"]:hover {
+    background-color: silver;
+    /* Lighten the button on hover */
+    color: #181818;
+    /* Invert text color for contrast */
+}
+
+.book-card {
+    display: inline-block;
+    width: 300px;
+    height: 200px;
+    margin: 10px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    text-align: center;
+    font-family: 'Montserrat';
+}
+
+.book-header {
+    background-color: #333;
+    color: silver;
+    padding: 20px;
+    text-align: center;
+}
+
+.book-title {
+    margin: 0;
+    font-size: 22px;
+}
+
+.book-author {
+    margin: 5px 0 0 0;
+    font-size: 18px;
+}
+
+.book-body {
+    padding: 20px;
+    text-align: center;
+}
+
+.book-pages {
+    margin: 0;
+    font-size: 18px;
+}
+
+.book-status {
+    margin: 10px 0 0 0;
+    font-size: 16px;
+    color: #333;
+}
+
+.read-status {
+    background-color: rgb(65, 65, 72);
+}
+
+button {
+    padding: 10px 20px;
+    border: 2px solid #333;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    background-color: #404353;
+    cursor: pointer;
+    color: silver;
+}
+
+button:hover {
+    background-color: #333;
+    color: #fff;
+}
