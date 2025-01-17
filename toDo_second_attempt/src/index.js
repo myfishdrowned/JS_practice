@@ -3,16 +3,14 @@ import './style.css';
 import Todo from './modules/todo.js';
 import { Project, defaultProject } from './modules/project.js';
 
-
 const app = document.getElementById('app');
 
+// Simple check to ensure the app container exists
 if (app) {
-  app.textContent = 'Hello, World!'; // Adds basic content to the page
+  app.textContent = 'Hello, World!'; // Adds basic content to the page for testing
 } else {
   console.error('App container not found.');
 }
-
-
 
 // Create a new project
 const workProject = new Project('Work');
@@ -74,3 +72,6 @@ function renderApp() {
   const workProjectElement = renderProject(workProject);
   app.appendChild(workProjectElement);
 }
+
+// Call the `renderApp` function to display the projects and todos
+renderApp();
