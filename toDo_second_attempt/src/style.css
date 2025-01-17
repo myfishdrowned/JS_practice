@@ -1,6 +1,7 @@
 body {
     font-family: Arial, sans-serif;
     margin: 20px;
+    max-width: 800px;
     background-color: #f4f4f4;
   }
   
@@ -12,8 +13,24 @@ body {
     border: 1px solid #ddd;
     background-color: #fff;
     margin-bottom: 20px;
-    padding: 10px;
+    padding: 15px;
     border-radius: 5px;
+  }
+  
+  .project h3 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    border-bottom: 2px solid #007bff;
+    padding-bottom: 5px;
+  }
+  
+  .project:hover {
+    background-color: #f1f1f1;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .todos-container {
+    margin-top: 10px;
   }
   
   .todo {
@@ -28,6 +45,23 @@ body {
     margin: 0;
   }
   
+  .todo.low {
+    border-left: 5px solid #28a745;
+  }
+  
+  .todo.medium {
+    border-left: 5px solid #ffc107;
+  }
+  
+  .todo.high {
+    border-left: 5px solid #dc3545;
+  }
+  
+  .todo:hover {
+    background-color: #fefefe;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
   button {
     margin-right: 5px;
     padding: 5px 10px;
@@ -39,6 +73,55 @@ body {
   }
   
   button:hover {
+    background-color: #0056b3;
+  }
+  
+  .add-button {
+    display: inline-block;
+    margin-bottom: 20px;
+    padding: 10px 20px;
+    font-size: 1em;
+    background-color: #28a745;
+    color: white;
+    border-radius: 5px;
+    text-align: center;
+    cursor: pointer;
+    text-decoration: none;
+  }
+  
+  .add-button:hover {
+    background-color: #218838;
+  }
+  
+  form {
+    margin-top: 20px;
+    padding: 15px;
+    border: 1px solid #ddd;
+    background-color: #fff;
+    border-radius: 5px;
+  }
+  
+  form input,
+  form textarea,
+  form select {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    font-size: 1em;
+  }
+  
+  form button {
+    background-color: #007bff;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 3px;
+    cursor: pointer;
+  }
+  
+  form button:hover {
     background-color: #0056b3;
   }
   

@@ -28,16 +28,17 @@ workProject.addTodo(new Todo('Client call', 'Call client about the new proposal'
 
 // Function to render a single todo
 function renderTodo(todo) {
-  const todoElement = document.createElement('div');
-  todoElement.classList.add('todo', 'mb-3', 'p-3', 'border', 'rounded');
-  todoElement.innerHTML = `
-    <h5>${todo.title}</h5>
-    <p>Description: ${todo.description}</p>
-    <p>Due Date: ${todo.dueDate}</p>
-    <p>Priority: ${todo.priority}</p>
-  `;
-  return todoElement;
-}
+    const todoElement = document.createElement('div');
+    todoElement.classList.add('todo', todo.priority.toLowerCase()); // Add priority class
+    todoElement.innerHTML = `
+      <h5>${todo.title}</h5>
+      <p>Description: ${todo.description}</p>
+      <p>Due Date: ${todo.dueDate}</p>
+      <p>Priority: ${todo.priority}</p>
+    `;
+    return todoElement;
+  }
+  
 
 // Function to render a project
 function renderProject(project) {
