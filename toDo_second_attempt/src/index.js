@@ -1,78 +1,90 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './style.css';
+import { defaultProject, Project } from './modules/project.js';
+import { addProjectListener, renderProjects } from './modules/dom.js';
 import Todo from './modules/todo.js';
-import { Project, defaultProject } from './modules/project.js';
 
-const app = document.getElementById('app');
-
-// Simple check to ensure the app container exists
-if (app) {
-  app.textContent = 'Hello, World!'; // Adds basic content to the page for testing
-} else {
-  console.error('App container not found.');
+// Save projects to localStorage
+function saveProjectsToLocalStorage() {
+  localStorage.setItem('projects', JSON.stringify(projects));
 }
 
-// Create a new project
-const workProject = new Project('Work');
-
-// Create todos
-const todo1 = new Todo('Finish report', 'Complete the sales report by Friday', '2025-01-20', 'High');
-const todo2 = new Todo('Team meeting', 'Prepare notes for the team meeting', '2025-01-19', 'Medium');
-
-// Add todos to the default project
-defaultProject.addTodo(todo1);
-defaultProject.addTodo(todo2);
-
-// Add another project
-workProject.addTodo(new Todo('Client call', 'Call client about the new proposal', '2025-01-18', 'High'));
-
-// Function to render a single todo
-function renderTodo(todo) {
-    const todoElement = document.createElement('div');
-    todoElement.classList.add('todo', todo.priority.toLowerCase()); // Add priority class
-    todoElement.innerHTML = `
-      <h5>${todo.title}</h5>
-      <p>Description: ${todo.description}</p>
-      <p>Due Date: ${todo.dueDate}</p>
-      <p>Priority: ${todo.priority}</p>
-    `;
-    return todoElement;
+// Load projects from localStorage or initialize defaults
+function loadProjectsFromLocalStorage() {
+  const storedProjects = JSON.parse(localStorage.getItem('projects'));
+  if (storedProjects) {
+    return storedProjects.map(projectData => {
+      const project = new Project(projectData.name);
+      project.todos = projectData.todos.map(todoData => new Todo(
+        todoData.title,
+        todoData.description,
+        todoData.dueDate,
+        todoData.priority,
+        todoData.notes,
+        todoData.checklist,
+        todoData.completed
+      ));
+      return project;
+    });
   }
-  
-
-// Function to render a project
-function renderProject(project) {
-  const projectElement = document.createElement('div');
-  projectElement.classList.add('project', 'mb-5');
-  
-  const projectHeader = document.createElement('h3');
-  projectHeader.textContent = project.name;
-  projectElement.appendChild(projectHeader);
-
-  const todosContainer = document.createElement('div');
-  todosContainer.classList.add('todos-container');
-  project.todos.forEach(todo => {
-    const todoElement = renderTodo(todo);
-    todosContainer.appendChild(todoElement);
-  });
-
-  projectElement.appendChild(todosContainer);
-  return projectElement;
+  return initializeProjects();
 }
 
-// Render projects into the DOM
-function renderApp() {
-  const app = document.getElementById('app');
-  app.innerHTML = ''; // Clear any existing content
+// Initialize default projects
+function initializeProjects() {
+  const defaultProject = new Project('Default Project');
+  defaultProject.addTodo(new Todo('Finish report', 'Complete the sales report by Friday', '2025-01-20', 'High'));
+  defaultProject.addTodo(new Todo('Team meeting', 'Prepare notes for the team meeting', '2025-01-19', 'Medium'));
 
-  // Render the default project
-  const defaultProjectElement = renderProject(defaultProject);
-  app.appendChild(defaultProjectElement);
+  const workProject = new Project('Work');
+  workProject.addTodo(new Todo('Client call', 'Call client about the new proposal', '2025-01-18', 'High'));
 
-  // Render the work project
-  const workProjectElement = renderProject(workProject);
-  app.appendChild(workProjectElement);
+  return [defaultProject, workProject];
 }
 
-// Call the `renderApp` function to display the projects and todos
-renderApp();
+// Initialize projects
+const projects = loadProjectsFromLocalStorage();
+renderProjects(projects);
+
+// Add event listener for adding projects
+addProjectListener((projectName) => {
+  const newProject = new Project(projectName);
+  projects.push(newProject);
+  saveProjectsToLocalStorage();
+  renderProjects(projects);
+});
+
+// Listener for editing and deleting todos and projects
+document.addEventListener('click', (event) => {
+  const target = event.target;
+
+  if (target.classList.contains('edit-todo')) {
+    const projectIndex = target.dataset.projectIndex;
+    const todoIndex = target.dataset.todoIndex;
+    const todo = projects[projectIndex].todos[todoIndex];
+
+    const updatedTitle = prompt('Edit Title:', todo.title);
+    if (updatedTitle) {
+      todo.title = updatedTitle;
+      saveProjectsToLocalStorage();
+      renderProjects(projects);
+    }
+  }
+
+  if (target.classList.contains('delete-todo')) {
+    const projectIndex = target.dataset.projectIndex;
+    const todoIndex = target.dataset.todoIndex;
+
+    projects[projectIndex].removeTodo(todoIndex);
+    saveProjectsToLocalStorage();
+    renderProjects(projects);
+  }
+
+  if (target.classList.contains('delete-project')) {
+    const projectIndex = target.dataset.projectIndex;
+
+    projects.splice(projectIndex, 1);
+    saveProjectsToLocalStorage();
+    renderProjects(projects);
+  }
+});

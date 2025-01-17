@@ -4,9 +4,24 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Todo List</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+  </style>
 </head>
 <body>
-  <div id="app"></div>
+  <main id="app">
+    <div id="projects-container">
+        <!-- Projects will render here -->
+    </div>
+    <div id="form-container">
+        <!-- Form for adding/editing todos will render here -->
+    </div>
+    <button id="add-project" class="add-button">Add Project</button>
+  </main>
   <script src="main.js"></script>
 </body>
 </html>
