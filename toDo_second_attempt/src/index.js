@@ -88,3 +88,19 @@ document.addEventListener('click', (event) => {
     renderProjects(projects);
   }
 });
+document.addEventListener('submit', (event) => {
+    if (event.target.id === 'todo-form') {
+      event.preventDefault();
+      const projectIndex = event.target.querySelector('button').dataset.projectIndex;
+      const title = document.getElementById('todo-title').value;
+      const description = document.getElementById('todo-description').value;
+      const dueDate = document.getElementById('todo-due-date').value;
+      const priority = document.getElementById('todo-priority').value;
+  
+      const newTodo = new Todo(title, description, dueDate, priority);
+      projects[projectIndex].addTodo(newTodo); // Add the new todo to the specific project
+      renderProjects(projects); // Re-render projects
+      document.getElementById('form-container').innerHTML = ''; // Clear the form
+      saveProjectsToLocalStorage(); // Save changes
+    }
+  });

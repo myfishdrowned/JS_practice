@@ -71,4 +71,23 @@ export function renderTodo(todo, projectIndex, todoIndex) {
       }
     });
   }
+  // dom.js
+export function renderTodoForm(projectIndex, todo = null) {
+    const formContainer = document.getElementById('form-container');
+    formContainer.innerHTML = `
+      <h3>${todo ? 'Edit Todo' : 'Add Todo'}</h3>
+      <form id="todo-form">
+        <input type="text" id="todo-title" placeholder="Title" value="${todo?.title || ''}" required>
+        <textarea id="todo-description" placeholder="Description">${todo?.description || ''}"></textarea>
+        <input type="date" id="todo-due-date" value="${todo?.dueDate || ''}" required>
+        <select id="todo-priority">
+          <option value="Low" ${todo?.priority === 'Low' ? 'selected' : ''}>Low</option>
+          <option value="Medium" ${todo?.priority === 'Medium' ? 'selected' : ''}>Medium</option>
+          <option value="High" ${todo?.priority === 'High' ? 'selected' : ''}>High</option>
+        </select>
+        <button type="submit" data-project-index="${projectIndex}">${todo ? 'Save Changes' : 'Add Todo'}</button>
+      </form>
+    `;
+  }
+
   
