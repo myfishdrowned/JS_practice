@@ -1,5 +1,5 @@
 function greet(name, callback) {
-    console.log('hello' + ' ' + name);
+    console.log('hello ' + name);
     callback();
 }
 
